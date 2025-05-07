@@ -40,7 +40,7 @@ export default function SignUp() {
                                 type="email"
                                 autoComplete="email"
                                 required
-                                placeholder="support@befound.com"
+                                placeholder="you@example.com"
                                 className="w-full px-4 py-2 rounded-lg border border-gray-200 bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
