@@ -28,7 +28,7 @@ export default function SignUp() {
                             Sign Up <span className="text-orange-500 text-lg font-semibold">As Influencer</span>
                         </h2>
                         <p className="text-gray-400 text-sm mb-4">
-                            The app is currently in dev mode and not accepting new user signups. Please, come back later or follow us on Twitter for updates.
+                            The application is currently in development mode. If you encounter any issues, please feel free to reach out to us at support@example.com..
                         </p>
                     </div>
                     <form className="space-y-4" onSubmit={handleSubmit}>

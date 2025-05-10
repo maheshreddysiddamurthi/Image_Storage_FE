@@ -16,7 +16,7 @@ export default function Home() {
         </span>
         <h1 className="text-4xl font-extrabold text-gray-900 mb-4 text-center">Welcome to the Cloud Srorage Space</h1>
         <p className="text-gray-500 text-center mb-8">Your one-stop solution for managing your data efficiently and beautifully. Please sign in to continue.</p>
-        <Link href="/signin" className="bg-yellow-500 hover:bg-yellow-100 text-white font-bold py-3 px-8 rounded-lg shadow transition text-lg">
+        <Link href="/login" className="bg-yellow-500 hover:bg-yellow-100 text-white font-bold py-3 px-8 rounded-lg shadow transition text-lg">
           Sign In
         </Link>
       </div>
