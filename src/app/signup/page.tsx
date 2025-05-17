@@ -80,7 +80,7 @@ export default function SignUp() {
                         <div className="flex items-center justify-between mt-4">
                             <span className="text-sm text-gray-500">
                                 Have an account?{' '}
-                                <Link href="/signin" className="text-orange-500 font-semibold hover:underline">Sign In</Link>
+                                <Link href="/login" className="text-orange-500 font-semibold hover:underline">Sign In</Link>
                             </span>
                             <button
                                 type="submit"
@@ -113,3 +113,4 @@ export default function SignUp() {
         </div>
     );
 }
+
