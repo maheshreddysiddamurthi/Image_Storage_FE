@@ -53,7 +53,7 @@ export default function Login() {
                         <button type="submit" className="w-full mt-2 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-lg shadow transition">Login</button>
                     </form>
                     <div className="mt-8 text-center text-black text-lg">
-                        Don't have an account?{' '}
+                        Don&apos;t have an account?{' '}
                         <Link href="/signup" className="text-green-700 hover:underline font-semibold">Sign Up</Link>
                     </div>
                 </div>

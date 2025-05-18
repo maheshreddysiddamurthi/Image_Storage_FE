@@ -2,6 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes dots {
+
+  0%,
+  20% {
+    content: '';
+  }
+
+  40% {
+    content: '.';
+  }
+
+  60% {
+    content: '..';
+  }
+
+  80%,
+  100% {
+    content: '...';
+  }
+}
+
+.animate-dots::after {
+  content: '';
+  /* Initial state */
+  animation: dots 1.5s infinite steps(1, end);
+}
+
+/* Re-adding base styles for the container span */
+.animate-dots {
+  display: inline-block;
+  width: 0.75em;
+  /* Adjust width based on font size */
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

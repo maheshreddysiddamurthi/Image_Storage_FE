@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Dancing_Script } from 'next/font/google';
+import { Cinzel } from 'next/font/google';
+import { Comfortaa } from 'next/font/google';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -10,6 +13,14 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const dancingScript = Dancing_Script({ subsets: ['latin'] });
+const cinzel = Cinzel({ subsets: ['latin'] });
+
+const comfortaa = Comfortaa({
+  subsets: ['latin'],
+  weight: ['400', '700'], // Specify weights you need
 });
 
 export const metadata: Metadata = {
@@ -25,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.className} ${cinzel.className} ${comfortaa.className} antialiased`}
       >
         {children}
       </body>
