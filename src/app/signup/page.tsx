@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function SignUp() {
     const [email, setEmail] = useState('');
@@ -88,10 +89,12 @@ export default function SignUp() {
             </div>
 
             {/* Logo at bottom left */}
-            <img
+            <Image
                 src="/logo.png"
                 alt="Logo"
-                className="absolute bottom-4 left-4 z-30 w-16 h-16 object-contain"
+                width={64}
+                height={64}
+                className="absolute bottom-4 left-4 z-30 object-contain"
             />
         </div>
     );
