@@ -29,12 +29,12 @@ export default function Home() {
             {/* Auth Buttons */}
             <div className="flex gap-4">
               <Link href="/login">
-                <button className="px-4 py-2 rounded-md bg-white text-blue-600 font-semibold hover:bg-gray-100 transition-colors">
+                <button className="px-4 py-2 rounded-md bg-red-800 text-white font-semibold hover:bg-red-900 transition-colors">
                   Sign In
                 </button>
               </Link>
               <Link href="/signup">
-                <button className="px-4 py-2 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors">
+                <button className="px-4 py-2 rounded-md bg-purple-600 text-white font-semibold hover:bg-purple-700 transition-colors">
                   Sign Up
                 </button>
               </Link>
@@ -126,7 +126,8 @@ export default function Home() {
             </div>
             <div className="text-center p-6 bg-white rounded-lg shadow-md border border-blue-300">
               <h3 className="text-xl font-semibold mb-2 text-blue-700">High-Quality Photos</h3>
-              <p className="text-blue-600">Preserve every photo's original resolution for vibrant memories.</p>
+              {/* <p className="text-blue-600">Preserve every photo's original resolution for vibrant memories.</p> */}
+              <p className="text-blue-600">Preserve every photo&#39;s original resolution for vibrant memories.</p>
             </div>
             <div className="text-center p-6 bg-white rounded-lg shadow-md border border-blue-300">
               <h3 className="text-xl font-semibold mb-2 text-blue-700">Privacy Controls</h3>
