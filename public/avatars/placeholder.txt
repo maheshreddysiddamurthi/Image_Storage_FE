@@ -1,0 +1,7 @@
+This directory contains user avatar images for testimonials.
+Please add the following images:
+- sarah.jpg
+- michael.jpg
+- emily.jpg
+
+You can use any professional headshot images or stock photos for these avatars. 

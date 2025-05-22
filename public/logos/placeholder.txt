@@ -1,0 +1,7 @@
+This directory contains company logo images for the testimonials section.
+Please add the following SVG files:
+- company1.svg
+- company2.svg
+- company3.svg
+
+You can use any professional company logos or create simple placeholder logos. 
