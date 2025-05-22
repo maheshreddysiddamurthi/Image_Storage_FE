@@ -6,6 +6,7 @@ import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
 import Testimonials from '@/components/Testimonials';
+import ContactCTA from '@/components/ContactCTA';
 import Footer from '@/components/Footer';
 
 export default function LandingPage() {
@@ -34,6 +35,7 @@ export default function LandingPage() {
       <Features />
       <HowItWorks />
       <Testimonials />
+      <ContactCTA />
       <Footer />
     </main>
   );

@@ -52,7 +52,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-600 hover:text-gray-900 transition-colors"
+                className="text-gray-200 hover:text-blue-400 transition-colors duration-200"
               >
                 {link.name}
               </Link>
@@ -93,14 +93,14 @@ const Navbar = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-white"
+          className="md:hidden bg-gray-800"
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                className="block px-3 py-2 text-gray-200 hover:text-blue-400 hover:bg-gray-700 rounded-md"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}

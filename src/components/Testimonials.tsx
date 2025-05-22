@@ -26,15 +26,33 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" className="py-24 bg-white relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 0.3, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute top-1/4 -right-40 w-96 h-96 bg-blue-50 rounded-full blur-3xl"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 0.3, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+          className="absolute bottom-1/4 -left-40 w-96 h-96 bg-blue-50 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-gray-900 sm:text-4xl"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-4xl sm:text-5xl font-bold text-gray-900"
           >
             Loved by Users Worldwide
           </motion.h2>
@@ -42,27 +60,37 @@ const Testimonials = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto"
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="mt-6 text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
           >
             See what our users have to say about their experience with SnapSync
           </motion.p>
         </div>
 
-        <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div 
+          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.author}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="relative bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow"
+              transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+              whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+              className="relative bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300"
             >
               {/* Quote icon */}
-              <div className="absolute -top-4 left-8">
-                <div className="p-2 bg-blue-600 rounded-lg">
+              <motion.div 
+                className="absolute -top-4 left-8"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="p-3 bg-blue-600 rounded-xl shadow-lg">
                   <svg
                     className="h-6 w-6 text-white"
                     fill="currentColor"
@@ -71,15 +99,27 @@ const Testimonials = () => {
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="pt-6">
-                <p className="text-gray-600 italic">
+              <div className="pt-8">
+                <motion.p 
+                  className="text-gray-600 italic text-lg leading-relaxed"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                >
                   &quot;{testimonial.content}&quot;
-                </p>
-                <div className="mt-6 flex items-center">
+                </motion.p>
+                <motion.div 
+                  className="mt-8 flex items-center"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+                >
                   <div className="flex-shrink-0">
-                    <div className="relative h-12 w-12 rounded-full overflow-hidden">
+                    <div className="relative h-14 w-14 rounded-full overflow-hidden shadow-lg">
                       <Image
                         src={testimonial.avatar}
                         alt={testimonial.author}
@@ -92,28 +132,43 @@ const Testimonials = () => {
                     <h4 className="text-lg font-semibold text-gray-900">
                       {testimonial.author}
                     </h4>
-                    <p className="text-gray-600">{testimonial.role}</p>
+                    <p className="text-gray-700">{testimonial.role}</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Trust badges */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
           className="mt-20 text-center"
         >
-          <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
+          <motion.p 
+            className="text-sm font-semibold text-gray-600 uppercase tracking-wide"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 1.4 }}
+          >
             Trusted by leading companies
-          </p>
-          <div className="mt-8 flex justify-center items-center space-x-12">
+          </motion.p>
+          <motion.div 
+            className="mt-8 flex justify-center items-center space-x-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 1.6 }}
+          >
             {/* Add company logos here */}
-            <div className="h-8 w-auto opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all">
+            <motion.div 
+              className="h-8 w-auto opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+              whileHover={{ scale: 1.1 }}
+            >
               <Image
                 src="/logos/company1.svg"
                 alt="Company 1"
@@ -121,9 +176,9 @@ const Testimonials = () => {
                 height={32}
                 className="h-8 w-auto"
               />
-            </div>
+            </motion.div>
             {/* Add more company logos as needed */}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
