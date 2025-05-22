@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
@@ -13,9 +12,11 @@ export default function LandingPage() {
   useEffect(() => {
     // Smooth scroll behavior for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+      anchor.addEventListener('click', (e) => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href')!);
+        const target = document.querySelector(
+          (e.currentTarget as HTMLAnchorElement).getAttribute('href')!
+        );
         if (target) {
           target.scrollIntoView({
             behavior: 'smooth',

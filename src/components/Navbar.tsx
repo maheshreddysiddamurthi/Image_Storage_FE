@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -35,9 +36,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
             <Link href="/">
-              <img
+              <Image
                 src="/camera-icon.png"
                 alt="SnapSync Logo"
+                width={48}
+                height={48}
                 className="h-12 w-12 rounded-full shadow border border-gray-200 object-cover bg-white"
               />
             </Link>

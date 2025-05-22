@@ -75,7 +75,7 @@ const Testimonials = () => {
 
               <div className="pt-6">
                 <p className="text-gray-600 italic">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </p>
                 <div className="mt-6 flex items-center">
                   <div className="flex-shrink-0">
