@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black overflow-hidden text-white">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-500 to-blue-700 overflow-hidden text-gray-900">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -39,7 +39,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Store and Share Your
-              <span className="text-blue-400 block mt-2">Memories</span>
+              <span className="text-white block mt-2">Memories</span>
               <span className="block mt-2">with SnapSync</span>
             </motion.h1>
             
@@ -63,7 +63,7 @@ const Hero = () => {
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-10 py-4 bg-blue-600 text-white rounded-full text-xl font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg"
+                  className="w-full sm:w-auto px-10 py-4 bg-white text-blue-600 rounded-full text-xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg"
                 >
                   Get Started
                 </motion.button>
@@ -72,7 +72,7 @@ const Hero = () => {
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-10 py-4 bg-gray-800 text-blue-400 rounded-full text-xl font-semibold hover:bg-gray-700 transition-all duration-300 shadow-lg border border-blue-800"
+                  className="w-full sm:w-auto px-10 py-4 bg-blue-900 text-white rounded-full text-xl font-semibold hover:bg-blue-800 transition-all duration-300 shadow-lg border border-blue-700"
                 >
                   How It Works
                 </motion.button>
@@ -124,11 +124,11 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-              className="text-center p-8 bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
               whileHover={{ y: -5 }}
             >
-              <div className="text-4xl font-bold text-blue-400 mb-3">{stat.number}</div>
-              <div className="text-gray-200 text-base md:text-lg">{stat.label}</div>
+              <div className="text-4xl font-bold text-blue-700 mb-3">{stat.number}</div>
+              <div className="text-gray-700 text-base md:text-lg">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
