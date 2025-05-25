@@ -1,12 +1,18 @@
+# Next.js Dashboard Setup (with TypeScript and Tailwind CSS)
+
+## Step 1: Create a new Next.js app
 npx create-next-app@latest dashboard-nextjs --typescript
+
+## Step 2: Install Tailwind CSS and dependencies
 npm install -D tailwindcss@3 postcss autoprefixer
 npx tailwindcss init -p
 
-#Add bewlow components in app/globals.css
+## Step 3: Configure Tailwind in your global styles
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-========================================================================================================================================================================================
+
+===========================================================================================================================================
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
