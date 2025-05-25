@@ -1,3 +1,12 @@
+npx create-next-app@latest dashboard-nextjs --typescript
+npm install -D tailwindcss@3 postcss autoprefixer
+npx tailwindcss init -p
+
+#Add bewlow components in app/globals.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+========================================================================================================================================================================================
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
