@@ -139,47 +139,6 @@ const Testimonials = () => {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Trust badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-20 text-center"
-        >
-          <motion.p 
-            className="text-sm font-semibold text-gray-600 uppercase tracking-wide"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 1.4 }}
-          >
-            Trusted by leading companies
-          </motion.p>
-          <motion.div 
-            className="mt-8 flex justify-center items-center space-x-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 1.6 }}
-          >
-            {/* Add company logos here */}
-            <motion.div 
-              className="h-8 w-auto opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-              whileHover={{ scale: 1.1 }}
-            >
-              <Image
-                src="/logos/company1.svg"
-                alt="Company 1"
-                width={120}
-                height={32}
-                className="h-8 w-auto"
-              />
-            </motion.div>
-            {/* Add more company logos as needed */}
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );

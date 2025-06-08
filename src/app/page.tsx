@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import StoriesDownloadSection from '@/components/StoriesDownloadSection';
 import Features from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
 import Testimonials from '@/components/Testimonials';
@@ -32,6 +33,14 @@ export default function LandingPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       <Hero />
+      <div 
+        className="relative w-full flex flex-col items-center justify-center bg-cover bg-center py-20 md:py-32"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/logos/landing-page-7.png')`,
+        }}
+      >
+        <StoriesDownloadSection />
+      </div>
       <Features />
       <HowItWorks />
       <Testimonials />

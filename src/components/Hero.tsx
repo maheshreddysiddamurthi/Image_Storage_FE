@@ -33,14 +33,12 @@ const Hero = () => {
             className="space-y-8 lg:w-1/2 lg:pr-10"
           >
             <motion.h1 
-              className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-gray-100 leading-tight"
+              className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-gray-100 leading-tight -mt-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Store and Share Your
-              <span className="text-white block mt-2">Memories</span>
-              <span className="block mt-2">with SnapSync</span>
+              Welcome to SnapSync
             </motion.h1>
             
             <motion.p 
@@ -95,14 +93,6 @@ const Hero = () => {
                 className="object-cover"
               />
             </div>
-             <div className="w-full max-w-md rounded-2xl shadow-lg overflow-hidden relative h-64 sm:h-80 md:h-96">
-              <Image
-                src="/logos/landing-page-7.png"
-                alt="Hero image 2"
-                fill
-                className="object-cover"
-              />
-            </div>
           </motion.div>
         </div>
 
@@ -114,7 +104,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           {[
-            { number: '10M+', label: 'Photos Stored' },
+            { number: '10M+', label: 'Photo Storage' },
             { number: '🚀', label: 'Just Launched! Be among the first to try SnapSync' },
             { number: '99.9%', label: 'Uptime' },
             { number: '24/7', label: 'Support' },
