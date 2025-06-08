@@ -5,10 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { loginWithRedirect, isAuthenticated, error, isLoading } = useAuth0();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +19,13 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    console.log("Auth0 Hook State:", { isAuthenticated, error, isLoading, loginWithRedirect: !!loginWithRedirect });
+    if (error) {
+      console.error("Auth0 Error:", error);
+    }
+  }, [isAuthenticated, error, isLoading, loginWithRedirect]);
 
   const navLinks = [
     { name: 'Features', href: '#features' },
@@ -28,9 +37,8 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -57,12 +65,19 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="/login"
+            <button
+              onClick={() => {
+                console.log("Sign In button clicked");
+                if (loginWithRedirect) {
+                  loginWithRedirect();
+                } else {
+                  console.log("loginWithRedirect is not available");
+                }
+              }}
               className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
             >
               Sign In
-            </Link>
+            </button>
             <Link
               href="/signup"
               className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
