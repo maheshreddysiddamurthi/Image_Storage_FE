@@ -58,10 +58,6 @@ export default function CompleteProfile() {
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-200 via-orange-200 to-yellow-400 py-8 px-2">
                 <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md p-8">
                     <div className="mb-6">
-                        <div className="flex items-center mb-2">
-                            <span className="font-bold text-2xl text-yellow-500 mr-2">🐝</span>
-                            <span className="font-bold text-xl text-gray-800">found</span>
-                        </div>
                         <h2 className="text-2xl font-bold text-gray-900 mb-1">Complete Your Profile</h2>
                         <p className="text-gray-400 text-sm">
                             Please provide your details to complete your profile.

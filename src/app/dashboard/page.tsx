@@ -7,16 +7,23 @@ import { verifyAuthToken } from '@/services/auth';
 import { User } from '@auth0/auth0-react';
 
 export default function Dashboard() {
-    const { user, getAccessTokenSilently } = useAuth0();
+    const { user, getAccessTokenSilently, isAuthenticated, logout } = useAuth0();
     const [isVerified, setIsVerified] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [userDetails, setUserDetails] = useState<any>(null);
 
     useEffect(() => {
         const verifyToken = async () => {
+            if (!user) {
+                console.log('Waiting for user data...');
+                return;
+            }
+
             try {
                 const token = await getAccessTokenSilently();
-                const response = await verifyAuthToken(token);
+                console.log('User data:', user);
+                
+                const response = await verifyAuthToken(token, user);
                 setIsVerified(response.is_authenticated);
                 setUserDetails(response);
             } catch (err) {
@@ -24,10 +31,15 @@ export default function Dashboard() {
                 console.error('Verification error:', err);
             }
         };
-
+        
         verifyToken();
-    }, [getAccessTokenSilently]);
+    }, [getAccessTokenSilently, user]);
 
+    const handleLogout = () => {
+        logout({ logoutParams: { returnTo: window.location.origin } });
+      };
+    
+    console.log('user', user);
     return (
         <ProtectedRoute>
             <div className="min-h-screen bg-gray-50">
@@ -47,6 +59,17 @@ export default function Dashboard() {
                                         alt={user?.name}
                                     />
                                 </div>
+                                {isAuthenticated ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-gray-200">{user?.name}</span>
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors"
+                >
+                  Logout
+                </button>
+              </div>
+            ): null}
                             </div>
                         </div>
                     </div>

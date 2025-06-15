@@ -10,7 +10,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { loginWithRedirect, isAuthenticated, error, isLoading } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, error, isLoading, user } = useAuth0();
+
+  console.log('isAuthenticated', isAuthenticated);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +29,26 @@ const Navbar = () => {
       console.error("Auth0 Error:", error);
     }
   }, [isAuthenticated, error, isLoading, loginWithRedirect]);
+
+  const handleLogout = () => {
+    logout({ logoutParams: { returnTo: window.location.origin } });
+  };
+
+  const handleSignIn = () => {
+    loginWithRedirect({
+      authorizationParams: {
+        screen_hint: 'login'
+      }
+    });
+  };
+
+  const handleSignUp = () => {
+    loginWithRedirect({
+      authorizationParams: {
+        screen_hint: 'signup'
+      }
+    });
+  };
 
   const navLinks = [
     { name: 'Features', href: '#features' },
@@ -65,25 +88,32 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <button
-              onClick={() => {
-                console.log("Sign In button clicked");
-                if (loginWithRedirect) {
-                  loginWithRedirect();
-                } else {
-                  console.log("loginWithRedirect is not available");
-                }
-              }}
-              className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
-            >
-              Sign In
-            </button>
-            <Link
-              href="/signup"
-              className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
-            >
-              Sign Up
-            </Link>
+            {isAuthenticated ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-gray-200">{user?.name}</span>
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <>
+                <button
+                  onClick={handleSignIn}
+                  className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
+                >
+                  Sign In
+                </button>
+                <button
+                  onClick={handleSignUp}
+                  className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
+                >
+                  Sign Up
+                </button>
+              </>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -121,20 +151,41 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="/login"
-              className="block px-3 py-2 bg-blue-600 text-white rounded-full text-center hover:bg-blue-700 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/signup"
-              className="block px-3 py-2 bg-blue-600 text-white rounded-full text-center hover:bg-blue-700 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Sign Up
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <div className="px-3 py-2 text-gray-200">{user?.name}</div>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsOpen(false);
+                  }}
+                  className="w-full px-3 py-2 bg-red-600 text-white rounded-full text-center hover:bg-red-700 transition-colors"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => {
+                    handleSignIn();
+                    setIsOpen(false);
+                  }}
+                  className="w-full px-3 py-2 bg-blue-600 text-white rounded-full text-center hover:bg-blue-700 transition-colors"
+                >
+                  Sign In
+                </button>
+                <button
+                  onClick={() => {
+                    handleSignUp();
+                    setIsOpen(false);
+                  }}
+                  className="w-full px-3 py-2 bg-blue-600 text-white rounded-full text-center hover:bg-blue-700 transition-colors"
+                >
+                  Sign Up
+                </button>
+              </>
+            )}
           </div>
         </motion.div>
       )}

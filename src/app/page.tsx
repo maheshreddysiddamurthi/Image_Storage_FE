@@ -33,7 +33,7 @@ export default function LandingPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       <Hero />
-      <div 
+      <div
         className="relative w-full flex flex-col items-center justify-center bg-cover bg-center py-20 md:py-32"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/logos/landing-page-7.png')`,

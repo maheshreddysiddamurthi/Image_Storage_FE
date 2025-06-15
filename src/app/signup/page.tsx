@@ -77,10 +77,6 @@ export default function SignUp() {
                 {/* Left: Form */}
                 <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
                     <div className="mb-6">
-                        <div className="flex items-center mb-2">
-                            <span className="font-bold text-2xl text-yellow-500 mr-2">🐝</span>
-                            <span className="font-bold text-xl text-gray-800">found</span>
-                        </div>
                         <h2 className="text-3xl font-extrabold text-gray-900 mb-1">
                             Sign Up <span className="text-orange-500 text-lg font-semibold">As Influencer</span>
                         </h2>

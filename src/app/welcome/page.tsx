@@ -30,10 +30,6 @@ export default function Welcome() {
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-200 via-orange-200 to-yellow-400 py-8 px-2">
             <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl p-12 text-center">
                 <div className="mb-8">
-                    <div className="flex items-center justify-center mb-4">
-                        <span className="font-bold text-4xl text-yellow-500 mr-2">🐝</span>
-                        <span className="font-bold text-3xl text-gray-800">found</span>
-                    </div>
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">
                         Welcome to SnapSync!
                     </h1>
