@@ -1,6 +1,6 @@
 import { User } from '@auth0/auth0-react';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 export interface AuthResponse {
     email: string;
