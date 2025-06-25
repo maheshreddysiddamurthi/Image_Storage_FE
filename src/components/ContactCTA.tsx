@@ -1,8 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
 
 // You'll need to add actual icons for app stores (e.g., Apple App Store, Google Play Store)
 // and potentially contact icons (email, phone).

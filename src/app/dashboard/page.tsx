@@ -3,16 +3,24 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { useEffect, useState, useCallback } from 'react';
-import { verifyAuthToken } from '@/services/auth';
-import { User } from '@auth0/auth0-react';
 import Link from 'next/link';
+import Image from 'next/image';
+
+interface UserDetails {
+    role?: string;
+    permissions?: string[];
+    picture?: string;
+    name?: string;
+    email?: string;
+    emailVerified?: boolean;
+    firstName?: string;
+    lastName?: string;
+}
 
 export default function Dashboard() {
     const { user, getAccessTokenSilently, isAuthenticated, logout } = useAuth0();
-    const [isVerified, setIsVerified] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [userDetails, setUserDetails] = useState<any>(null);
-    const [userData, setUserData] = useState<any>(null);
+    const [userData, setUserData] = useState<UserDetails | null>(null);
     const [firstName, setFirstName] = useState<string>('');
     const [lastName, setLastName] = useState<string>('');
 
@@ -105,11 +113,13 @@ export default function Dashboard() {
                             <div className="flex items-center">
                                 <div className="flex items-center space-x-4">
                                     <span className="text-sm text-gray-700">{user?.email}</span>
-                                    <img
+                                    {user?.picture && <Image
                                         className="h-8 w-8 rounded-full"
-                                        src={user?.picture}
-                                        alt={user?.name}
-                                    />
+                                        src={user.picture}
+                                        alt={user.name ?? 'User profile picture'}
+                                        width={32}
+                                        height={32}
+                                    />}
                                 </div>
                                 {isAuthenticated && (
                                     <div className="flex items-center space-x-4 ml-4">
@@ -133,10 +143,6 @@ export default function Dashboard() {
                         <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg">
                             {error}
                         </div>
-                    ) : !isVerified ? (
-                        <div className="bg-yellow-50 border border-yellow-200 text-yellow-600 px-4 py-3 rounded-lg">
-                            Verifying your session...
-                        </div>
                     ) : (
                         <div className="space-y-6">
                             {/* Welcome Section */}
@@ -152,10 +158,12 @@ export default function Dashboard() {
                             {/* User Profile Section */}
                             <div className="bg-white rounded-xl shadow-md p-6 mb-8">
                                 <div className="flex items-center space-x-4 mb-4">
-                                    <img
+                                    <Image
                                         src={userData?.picture || user?.picture || 'https://via.placeholder.com/64'}
                                         alt="Profile"
                                         className="w-16 h-16 rounded-full"
+                                        width={64}
+                                        height={64}
                                     />
                                     <div>
                                         <h2 className="text-2xl font-semibold text-gray-800">
@@ -208,7 +216,7 @@ export default function Dashboard() {
                                     Your Profile
                                 </h2>
                                 <p className="text-gray-600">
-                                    You're signed in as {userDetails?.role || 'User'}
+                                    You&apos;re signed in as {userData?.role || 'User'}
                                 </p>
                             </div>
 
@@ -220,12 +228,12 @@ export default function Dashboard() {
                                 </div>
                                 <div className="bg-white shadow-sm rounded-lg p-6">
                                     <h3 className="text-lg font-medium text-gray-900 mb-2">Role</h3>
-                                    <p className="text-gray-600">{userDetails?.role || 'User'}</p>
+                                    <p className="text-gray-600">{userData?.role || 'User'}</p>
                                 </div>
                                 <div className="bg-white shadow-sm rounded-lg p-6">
                                     <h3 className="text-lg font-medium text-gray-900 mb-2">Permissions</h3>
                                     <div className="flex flex-wrap gap-2">
-                                        {userDetails?.permissions?.map((permission: string) => (
+                                        {userData?.permissions?.map((permission) => (
                                             <span
                                                 key={permission}
                                                 className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"

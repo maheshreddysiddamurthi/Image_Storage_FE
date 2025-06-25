@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
 export default function CompleteProfile() {
-    const { user, getAccessTokenSilently } = useAuth0();
+    const { getAccessTokenSilently } = useAuth0();
     const router = useRouter();
     const [formData, setFormData] = useState({
         firstName: '',
@@ -46,8 +46,12 @@ export default function CompleteProfile() {
             }
 
             router.push('/welcome');
-        } catch (err: any) {
-            setError(err.message || 'Error updating profile');
+        } catch (err) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('An unknown error occurred');
+            }
         } finally {
             setLoading(false);
         }

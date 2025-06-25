@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useAuth0 } from '@auth0/auth0-react';
 
 export default function SignIn() {
@@ -12,8 +11,7 @@ export default function SignIn() {
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const router = useRouter();
-    const { loginWithRedirect, isAuthenticated } = useAuth0();
+    const { loginWithRedirect } = useAuth0();
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -36,8 +34,12 @@ export default function SignIn() {
                     password: formData.password,
                 }
             });
-        } catch (err: any) {
-            setError(err.message || 'Invalid email or password');
+        } catch (err) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('Invalid email or password');
+            }
         } finally {
             setLoading(false);
         }
@@ -50,8 +52,12 @@ export default function SignIn() {
                     connection: 'google-oauth2',
                 }
             });
-        } catch (err: any) {
-            setError(err.message || 'Error signing in with Google');
+        } catch (err) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('Error signing in with Google');
+            }
         }
     };
 
@@ -105,7 +111,7 @@ export default function SignIn() {
                         </div>
                         <div className="flex items-center justify-between mt-4">
                             <span className="text-sm text-gray-500">
-                                Don't have an account?{' '}
+                                Don&apos;t have an account?{' '}
                                 <Link href="/signup" className="text-orange-500 font-semibold hover:underline">Sign Up</Link>
                             </span>
                             <button

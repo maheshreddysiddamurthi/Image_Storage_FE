@@ -1,8 +1,6 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import DownloadCTA from '@/components/DownloadCTA';

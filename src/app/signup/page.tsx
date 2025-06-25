@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useAuth0 } from '@auth0/auth0-react';
 
 export default function SignUp() {
@@ -13,7 +12,6 @@ export default function SignUp() {
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const router = useRouter();
     const { loginWithRedirect } = useAuth0();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,8 +49,12 @@ export default function SignUp() {
                     redirect_uri: `${window.location.origin}/complete-profile`
                 }
             });
-        } catch (err: any) {
-            setError(err.message || 'Error creating account');
+        } catch (err) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('Error creating account');
+            }
         } finally {
             setLoading(false);
         }
@@ -66,8 +68,12 @@ export default function SignUp() {
                     redirect_uri: `${window.location.origin}/complete-profile`
                 }
             });
-        } catch (err: any) {
-            setError(err.message || 'Error signing in with Google');
+        } catch (err) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('Error signing in with Google');
+            }
         }
     };
 

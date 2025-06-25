@@ -51,7 +51,7 @@ export async function POST(req: Request) {
             }
         });
 
-    } catch (error: any) {
+    } catch (error) {
         console.error('Profile update error:', error);
         return NextResponse.json(
             { error: 'Error updating profile' },

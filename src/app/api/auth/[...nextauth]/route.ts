@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
-import { MongoDBAdapter } from '@auth/mongodb-adapter';
+import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import clientPromise from '@/lib/mongodb-adapter';
 import connectDB from '@/lib/mongodb';
 import User from '@/models/User';
@@ -86,7 +86,7 @@ const handler = NextAuth({
     },
     pages: {
         signIn: '/signin',
-        signUp: '/signup',
+        newUser: '/signup',
         error: '/auth/error',
     },
     secret: process.env.NEXTAUTH_SECRET,

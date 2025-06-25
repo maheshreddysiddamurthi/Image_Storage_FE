@@ -3,6 +3,19 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useCallback, useEffect, useState } from 'react';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import Image from 'next/image';
+
+interface UserDetails {
+    role?: string;
+    permissions?: string[];
+    picture?: string;
+    name?: string;
+    email?: string;
+    emailVerified?: boolean;
+    firstName?: string;
+    lastName?: string;
+    nickname?: string;
+}
 
 export default function ProfilePage() {
     const { user, getAccessTokenSilently } = useAuth0();
@@ -11,7 +24,7 @@ export default function ProfilePage() {
     const [nickname, setNickname] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    const [profile, setProfile] = useState<any>(null);
+    const [profile, setProfile] = useState<UserDetails | null>(null);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [imageFile, setImageFile] = useState<File | null>(null);
 
@@ -46,7 +59,7 @@ export default function ProfilePage() {
             setLastName(data.user.lastName || '');
             setNickname(data.user.nickname || user?.nickname || '');
             setSelectedImage(data.user.picture || user?.picture || null);
-        } catch (err) {
+        } catch {
             setMessage('Failed to load profile');
         } finally {
             setLoading(false);
@@ -109,7 +122,7 @@ export default function ProfilePage() {
             } else {
                 setMessage(data.error || 'Failed to update profile');
             }
-        } catch (err) {
+        } catch {
             setMessage('Failed to update profile');
         } finally {
             setLoading(false);
@@ -122,10 +135,12 @@ export default function ProfilePage() {
                 <h1 className="text-3xl font-bold mb-6">My Profile</h1>
                 <form onSubmit={handleSave} className="space-y-4">
                     <div className="flex items-center mb-6">
-                        <img
+                        <Image
                             src={selectedImage || profile?.picture || user?.picture || 'https://via.placeholder.com/64'}
                             alt="Profile"
                             className="w-16 h-16 rounded-full mr-4 object-cover"
+                            width={64}
+                            height={64}
                         />
                         <div>
                             <div className="text-lg font-semibold">{profile?.email || user?.email}</div>

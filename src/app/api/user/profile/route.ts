@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
-import { auth0 } from '../../../lib/auth0';
+import { NextResponse, NextRequest } from 'next/server';
+import { auth0 } from "@/lib/auth0";
 import User from '@/models/User';
 import connectDB from '@/lib/mongodb';
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
     try {
         const session = await auth0.getSession(req);
         if (!session?.user) {
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
                 mobileNumber: user.mobileNumber,
             }
         });
-    } catch (error: any) {
+    } catch (error) {
         console.error('Profile update error:', error);
         return NextResponse.json(
             { error: 'Failed to update profile' },
